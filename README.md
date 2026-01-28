@@ -85,3 +85,18 @@ simulating visual attention patterns using image processing techniques.
 This project prioritizes clarity, modularity, and extensibility over
 end-to-end performance. The goal is to build a strong and interpretable
 foundation before adding more complex models.
+
+---
+
+## Quick Example
+
+```python
+import numpy as np
+
+from core.features import CenterBiasFeature
+
+image = np.zeros((240, 320, 3), dtype=np.float32)
+feature = CenterBiasFeature()
+attention_map = feature(image)
+print(attention_map.shape)  # (240, 320)
+```
