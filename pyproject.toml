@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-attention-heatmap"
+version = "1.0.0"
+description = "Rule-based visual attention core for saliency and heatmap generation"
+authors = [
+    { name = "Sang Park" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
