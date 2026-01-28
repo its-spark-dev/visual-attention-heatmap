@@ -88,12 +88,26 @@ foundation before adding more complex models.
 
 ---
 
+## Available Features
+
+- `CenterBiasFeature`: center-weighted attention with smooth radial falloff.
+- `ContrastFeature`: per-pixel deviation from global mean intensity.
+- `EdgeDensityFeature`: gradient magnitude from simple finite differences.
+- `CenterSurroundFeature`: DoG-like center–surround response.
+
+---
+
 ## Quick Example
 
 ```python
 import numpy as np
 
-from core.features import CenterBiasFeature, ContrastFeature, EdgeDensityFeature
+from core.features import (
+    CenterBiasFeature,
+    CenterSurroundFeature,
+    ContrastFeature,
+    EdgeDensityFeature,
+)
 from core.fusion import fuse_features
 
 image = np.zeros((240, 320, 3), dtype=np.float32)
@@ -103,6 +117,11 @@ print(attention_map.shape)  # (240, 320)
 
 contrast = ContrastFeature()
 edges = EdgeDensityFeature()
-fused_map = fuse_features([feature, contrast, edges], image, weights=[0.6, 0.2, 0.2])
+surround = CenterSurroundFeature()
+fused_map = fuse_features(
+    [feature, contrast, edges, surround],
+    image,
+    weights=[0.5, 0.2, 0.2, 0.1],
+)
 print(fused_map.shape)  # (240, 320)
 ```
