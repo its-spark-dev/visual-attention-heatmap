@@ -21,9 +21,13 @@
 - No formatter/linter is configured yet; avoid reformatting unrelated code.
 
 ## Testing Guidelines
-- No automated tests are present today.
-- If you add tests, prefer `pytest` and place them under `tests/` (e.g., `tests/test_center_bias.py`).
+- Tests use `pytest` and live under `tests/` (e.g., `tests/test_center_bias.py`).
 - Keep tests deterministic; feature outputs should be normalized to `[0, 1]` as stated in `DESIGN.md`.
+
+## Running Tests
+- Create a virtual environment with `uv venv .venv`.
+- Install dependencies: `uv pip install --python .venv/bin/python pytest numpy`.
+- Run the suite: `.venv/bin/python -m pytest -q`.
 
 ## Commit & Pull Request Guidelines
 - Commit history uses short, imperative, sentence-case messages (e.g., “Add design document…”).
