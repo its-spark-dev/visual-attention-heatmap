@@ -94,9 +94,13 @@ foundation before adding more complex models.
 import numpy as np
 
 from core.features import CenterBiasFeature
+from core.fusion import fuse_features
 
 image = np.zeros((240, 320, 3), dtype=np.float32)
 feature = CenterBiasFeature()
 attention_map = feature(image)
 print(attention_map.shape)  # (240, 320)
+
+fused_map = fuse_features([feature, feature], image, weights=[0.6, 0.4])
+print(fused_map.shape)  # (240, 320)
 ```
